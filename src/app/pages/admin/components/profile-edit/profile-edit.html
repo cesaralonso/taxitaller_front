@@ -1,0 +1,18 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-6">
+      <div>
+        <ba-card cardTitle="Editar Usuario" baCardClass="with-scroll">
+          <usuarios-edit-form></usuarios-edit-form>
+        </ba-card>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ba-card cardTitle="Carga de Avatar" baCardClass="with-scroll">
+        <ba-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="fileUploaderOptions" ></ba-picture-uploader>
+      </ba-card>
+    </div>
+  </div>
+</div>
