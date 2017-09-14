@@ -12,11 +12,10 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { routing } from './talleres.routing';
 import { TalleresComponent } from './talleres.component';
 
-import { TalleresAddModalComponent } from './components/talleres-table/talleres-add-modal/talleres-add-modal.component';
 import { TalleresEditModalComponent } from './components/talleres-table/talleres-edit-modal/talleres-edit-modal.component';
 import { TalleresService } from './components/talleres-table/talleres.service';
 import { TallerEditModalComponent } from './components/talleres-table/taller-edit-modal/taller-edit-modal.component';
-import { TallerAddModalComponent } from './components/talleres-table/taller-add-modal/taller-add-modal.component';
+import { TalleresAddModalComponent } from './components/talleres-table/talleres-add-modal/talleres-add-modal.component';
 
 import { TalleresTableComponent } from './components/talleres-table/talleres-table.component';
 import { DataFilterPipe } from './components/talleres-table/data-filter.pipe';
@@ -38,15 +37,13 @@ import { DataFilterPipe } from './components/talleres-table/data-filter.pipe';
     TalleresComponent,
     TalleresTableComponent,
     DataFilterPipe,
-    TalleresAddModalComponent,
     TalleresEditModalComponent,
-    TallerAddModalComponent,
+    TalleresAddModalComponent,
     TallerEditModalComponent,
   ],
   entryComponents: [
-    TalleresAddModalComponent,
     TalleresEditModalComponent,
-    TallerAddModalComponent
+    TalleresAddModalComponent
   ],
   providers: [
     TalleresService

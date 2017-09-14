@@ -1,4 +1,4 @@
-import { TallerAddModalComponent } from './taller-add-modal/taller-add-modal.component';
+import { TalleresAddModalComponent } from './talleres-add-modal/talleres-add-modal.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { TalleresInterface } from './talleres.interface';
@@ -6,7 +6,6 @@ import { TalleresResponseInterface } from './talleres-response.interface';
 import { Component, OnInit } from '@angular/core';
 import { TalleresService } from './talleres.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TalleresAddModalComponent } from './talleres-add-modal/talleres-add-modal.component';
 import { TalleresEditModalComponent } from './talleres-edit-modal/talleres-edit-modal.component';
 
 @Component({
@@ -34,11 +33,6 @@ export class TalleresTableComponent implements OnInit {
 
     toInt(num: string) {
         return +num;
-    }
-
-    addTalleresModalShow() {
-      const activeModal = this.modalService.open(TalleresAddModalComponent, { size: 'lg' });
-      activeModal.componentInstance.modalHeader = 'Agregar Taller';
     }
 
     editTalleresModalShow(id: any) {
@@ -86,7 +80,7 @@ export class TalleresTableComponent implements OnInit {
     }
     
     showModalSearch() {
-      const disposable = this.dialogService.addDialog(TallerAddModalComponent)
+      const disposable = this.dialogService.addDialog(TalleresAddModalComponent)
         .subscribe( data => {
             this.showToast( data );
         });

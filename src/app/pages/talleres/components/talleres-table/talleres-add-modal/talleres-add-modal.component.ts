@@ -1,96 +1,89 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { layoutPaths } from './../../../../../theme/theme.constants';
-import { AuthLocalstorage } from './../../../../../shared/auth-localstorage.service';
-import { TalleresService } from './../talleres.service';
-import { Modals } from './../../../../ui/components/modals/modals.component';
 import { TalleresInterface } from './../talleres.interface';
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TalleresService } from './../talleres.service';
+import { AuthLocalstorage } from './../../../../../shared/auth-localstorage.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 
 @Component({
-  selector: 'add-service-modal',
-  styleUrls: [('./talleres-add-modal.component.scss')],
-  templateUrl: './talleres-add-modal.component.html'
+    selector: 'talleres-add-modal',
+    templateUrl: './talleres-add-modal.component.html'
 })
 
-export class TalleresAddModalComponent implements OnInit {s
+export class TalleresAddModalComponent extends DialogComponent<TalleresInterface, any> implements OnInit  {
 
-  // _estatustalleres: string[];
-  // _razonsocialasociado: string[];
-  // _razonsocialconstructor: string[];
-  // _razonsocialcontratista: string[];
-  // _razonsocialcliente: string[];
-  // _tipoobra: string[];
+    public taller: TalleresInterface = {
+        nombre: '',
+        direccion: '',
+        descripcion: '',
+        telefono: '',
+        lat: '',
+        lng: '',
+        baja: false,
+        created_at: '',
+        created_by: '',
+    };
 
-  modalHeader: string;
+    data: any;
 
-  form: FormGroup;
-  submitted: boolean = false;
+    modalHeader: string;
+    
+    form: FormGroup;
+    submitted: boolean = false;
 
-  nombre: AbstractControl;
-  direccion: AbstractControl;
-  descripcion: AbstractControl;
-  telefono: AbstractControl;
-  lat: AbstractControl;
-  lng: AbstractControl;
+    nombreAC: AbstractControl;
+    direccionAC : AbstractControl;
+    descripcionAC : AbstractControl;
+    telefonoAC : AbstractControl;
+    latAC : AbstractControl;
+    lngAC : AbstractControl;
 
-  constructor(
-    private service: TalleresService,
-    private activeModal: NgbActiveModal,
-    fb: FormBuilder,
-    private toastrService: ToastrService,
-    private authLocalstorage: AuthLocalstorage
-  ) {
+    constructor( 
+        dialogService: DialogService,
+        fb: FormBuilder,
+        private authLocalstorage: AuthLocalstorage,
+        private talleresService: TalleresService
+    ) {
+        super(dialogService);
 
-      this.form = fb.group({
-  
-        'nombre' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-        'direccion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-        'descripcion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-        'telefono' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-        'lat' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-        'lng' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-        
-      });
-      
-      this.nombre = this.form.controls['nombre'];
-      this.direccion = this.form.controls['direccion'];
-      this.descripcion = this.form.controls['descripcion'];
-      this.telefono = this.form.controls['telefono'];
-      this.lat = this.form.controls['lat'];
-      this.lng = this.form.controls['lng'];
-  }
+        this.form = fb.group({
+            
+            'nombreAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'direccionAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'descripcionAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'telefonoAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'latAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'lngAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            
+        });
+                
+        this.nombreAC = this.form.controls['nombreAC'];
+        this.direccionAC = this.form.controls['direccionAC'];
+        this.descripcionAC = this.form.controls['descripcionAC'];
+        this.telefonoAC = this.form.controls['telefonoAC'];
+        this.latAC = this.form.controls['latAC'];
+        this.lngAC = this.form.controls['lngAC'];
+     }
 
 
-  ngOnInit() {
 
-  }
-
-  closeModal() {
-    this.activeModal.close();
-  }
-
-  onSubmit(values: any): void {
-    if (this.form.valid) {
-      this.service.addTalleres(values)
-        .subscribe((data: any) => this.showToast(data, values));
-    }
-  }
-
-  private showToast(data: any, values: any) {
-    if (data.idRespuesta === 0) {
-
-      this.toastrService.success(data.mensajeRespuesta);
-      this.closeModal();
+    ngOnInit() { }
+    
+    confirm() {
+        this.result = this.data;
+        this.close();
     }
 
-    if (data.idRespuesta === -1) {
-      this.toastrService.error(data.mensajeRespuesta);
+    onSubmit( form ) {
+        if (form.valid) {
+            this.talleresService.addTalleres( this.taller )
+                .subscribe((data: any) => {                        
+                    this.data = data;
+                    this.confirm();
+                });
+        }
     }
-  }
 
 
 }
