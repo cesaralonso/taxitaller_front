@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './vehiculo-edit-modal.component.html'
 })
 
-export class VehiculoEditModalComponent implements OnInit {
+export class VehiculosEditModalComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }

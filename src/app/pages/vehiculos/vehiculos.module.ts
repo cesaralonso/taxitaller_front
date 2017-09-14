@@ -15,8 +15,6 @@ import { VehiculosComponent } from './vehiculos.component';
 import { VehiculosAddModalComponent } from './components/vehiculos-table/vehiculos-add-modal/vehiculos-add-modal.component';
 import { VehiculosEditModalComponent } from './components/vehiculos-table/vehiculos-edit-modal/vehiculos-edit-modal.component';
 import { VehiculosService } from './components/vehiculos-table/vehiculos.service';
-import { VehiculoEditModalComponent } from './components/vehiculos-table/vehiculo-edit-modal/vehiculo-edit-modal.component';
-import { VehiculoAddModalComponent } from './components/vehiculos-table/vehiculo-add-modal/vehiculo-add-modal.component';
 
 import { VehiculosTableComponent } from './components/vehiculos-table/vehiculos-table.component';
 import { DataFilterPipe } from './components/vehiculos-table/data-filter.pipe';
@@ -40,13 +38,10 @@ import { DataFilterPipe } from './components/vehiculos-table/data-filter.pipe';
     DataFilterPipe,
     VehiculosAddModalComponent,
     VehiculosEditModalComponent,
-    VehiculoAddModalComponent,
-    VehiculoEditModalComponent,
   ],
   entryComponents: [
     VehiculosAddModalComponent,
     VehiculosEditModalComponent,
-    VehiculoAddModalComponent
   ],
   providers: [
     VehiculosService

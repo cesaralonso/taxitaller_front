@@ -44,25 +44,25 @@ export class VehiculosService {
             .catch(this.handleError);
     }
 
-    getVehiculos = (id: number): Observable<VehiculosInterface> => {
+    getVehiculos = (id: number): Observable<VehiculosResponseInterface> => {
         this.actionUrl = `${this._configuration.serverWithApiUrl}getVehiculos/${id}`;
         return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <VehiculosInterface>response.json())
+            .map((response: Response) => <VehiculosResponseInterface>response.json())
             .catch(this.handleError);
     }
 
-    getAllVehiculos = (): Observable<VehiculosInterface> => {
+    getAllVehiculos = (): Observable<VehiculosResponseInterface> => {
         this.actionUrl = `${this._configuration.serverWithApiUrl}getVehiculos`;
         return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <VehiculosInterface>response.json())
+            .map((response: Response) => <VehiculosResponseInterface>response.json())
             .catch(this.handleError);
     }
 
 
-    deleteVehiculos = (id: string): Observable<VehiculosInterface> => {
+    deleteVehiculos = (id: string): Observable<VehiculosResponseInterface> => {
         this.actionUrl = `${this._configuration.serverWithApiUrl}deleteVehiculos/${id}`;
         return this._http.delete(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <VehiculosInterface>response.json())
+            .map((response: Response) => <VehiculosResponseInterface>response.json())
             .catch(this.handleError);
     }
 

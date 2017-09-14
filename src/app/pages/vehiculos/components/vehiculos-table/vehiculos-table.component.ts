@@ -1,4 +1,4 @@
-import { VehiculoAddModalComponent } from './vehiculo-add-modal/vehiculo-add-modal.component';
+import { VehiculosAddModalComponent } from './vehiculos-add-modal/vehiculos-add-modal.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { VehiculosInterface } from './vehiculos.interface';
@@ -6,7 +6,6 @@ import { VehiculosResponseInterface } from './vehiculos-response.interface';
 import { Component, OnInit } from '@angular/core';
 import { VehiculosService } from './vehiculos.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { VehiculosAddModalComponent } from './vehiculos-add-modal/vehiculos-add-modal.component';
 import { VehiculosEditModalComponent } from './vehiculos-edit-modal/vehiculos-edit-modal.component';
 
 @Component({
@@ -80,27 +79,16 @@ export class VehiculosTableComponent implements OnInit {
         this.service
           .getAllVehiculos()
           .subscribe(
-              (data: VehiculosInterface) => this.data = data,
+              (data: VehiculosResponseInterface) => this.data = data.data,
               error => console.log(error),
               () => console.log('Get all Items complete'));
     }
     
     showModalSearch() {
-      const disposable = this.dialogService.addDialog(VehiculoAddModalComponent, {
-        nombre: 'string',
-        direccion: 'string',
-        descripcion: 'string',
-        telefono: 'string',
-        lat: 'string',
-        lng: 'string',
-        baja: true,
-        created_at: 'string',
-        created_by: 'string',
-    
-      }).subscribe( data => {
+      const disposable = this.dialogService.addDialog( VehiculosAddModalComponent ).subscribe( data => {
           if ( data.status === 'success' ) {
             this.vehiculosTable.push( data.data );
-            this.showToast( data );
+            this.showToast( data.message );
           }
       });
     }
