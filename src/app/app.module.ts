@@ -8,6 +8,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -63,7 +65,9 @@ export type StoreType = {
     LocalStorageModule.withConfig({
         prefix: 'taxytaller',
         storageType: 'localStorage'
-    })
+    }),
+    BootstrapModalModule.forRoot({ container: document.body })
+    
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,

@@ -1,3 +1,4 @@
+import { TallerAddModalComponent } from './components/talleres-table/taller-add-modal/taller-add-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule as AngularFormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,6 +7,8 @@ import { NgaModule } from '../../theme/nga.module';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTableModule } from 'angular2-datatable';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+
 
 import { routing } from './talleres.routing';
 import { TalleresComponent } from './talleres.component';
@@ -27,18 +30,21 @@ import { DataFilterPipe } from './components/talleres-table/data-filter.pipe';
     NgbRatingModule,
     routing,
     DataTableModule,
-    NgbModalModule
+    NgbModalModule,
+    BootstrapModalModule.forRoot({ container: document.body })    
   ],
   declarations: [
     TalleresComponent,
     TalleresTableComponent,
     DataFilterPipe,
     TalleresAddModalComponent,
-    TalleresEditModalComponent
+    TalleresEditModalComponent,
+    TallerAddModalComponent
   ],
   entryComponents: [
     TalleresAddModalComponent,
-    TalleresEditModalComponent
+    TalleresEditModalComponent,
+    TallerAddModalComponent
   ],
   providers: [
     TalleresService

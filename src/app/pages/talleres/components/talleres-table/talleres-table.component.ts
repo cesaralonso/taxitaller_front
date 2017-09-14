@@ -1,3 +1,5 @@
+import { TallerAddModalComponent } from './taller-add-modal/taller-add-modal.component';
+import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { TalleresInterface } from './talleres.interface';
 import { TalleresResponseInterface } from './talleres-response.interface';
@@ -20,8 +22,13 @@ export class TalleresTableComponent implements OnInit {
     sortBy = 'idTaller';
     sortOrder = 'asc';
 
-  constructor(private service: TalleresService, private modalService: NgbModal, private toastrService: ToastrService) {
-    }
+  constructor(
+    private service: TalleresService, 
+    private modalService: NgbModal, 
+    private toastrService: ToastrService,
+    private dialogService: DialogService,
+  ) {
+  }
 
     toInt(num: string) {
         return +num;
@@ -29,7 +36,7 @@ export class TalleresTableComponent implements OnInit {
 
     addTalleresModalShow() {
       const activeModal = this.modalService.open(TalleresAddModalComponent, { size: 'lg' });
-      activeModal.componentInstance.modalHeader = 'Agregar Usuario';
+      activeModal.componentInstance.modalHeader = 'Agregar Taller';
     }
 
     editTalleresModalShow(id: any) {
@@ -75,6 +82,22 @@ export class TalleresTableComponent implements OnInit {
               error => console.log(error),
               () => console.log('Get all Items complete'));
     }
-
+    
+    showModalSearch() {
+      const disposable = this.dialogService.addDialog(TallerAddModalComponent, {
+        nombre: 'string',
+        direccion: 'string',
+        descripcion: 'string',
+        telefono: 'string',
+        lat: 'string',
+        lng: 'string',
+        baja: true,
+        created_at: 'string',
+        created_by: 'string',
+    
+      }).subscribe( data => {
+        console.log(data);
+      });
+    }
 
 }
