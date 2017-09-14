@@ -63,10 +63,11 @@ export class TallerEditModalComponent extends DialogComponent<TalleresInterface,
 
     confirm( data ) {
         this.result = data;
+        console.log('From modal: ' + this.result);
         this.close();
     }
 
-    onSubmit( form ) {
+    updateTaller( form ) {
         console.log('submitted');
         if (form.valid) {
             this.talleresService.editTalleres( {
@@ -83,8 +84,6 @@ export class TallerEditModalComponent extends DialogComponent<TalleresInterface,
                     created_by: this.created_by,
                 }
             }).subscribe((data: any) => {
-                console.log('From modal: ' + data);
-                // this.data = data;
                 this.confirm( data );
             });
         }

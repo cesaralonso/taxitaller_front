@@ -37,14 +37,13 @@ export class TalleresTableComponent implements OnInit {
     }
 
     editTalleresModalShow( taller ) {
-      // const activeModal = this.modalService.open(TalleresEditModalComponent, { size: 'lg' });
-      // activeModal.componentInstance.modalHeader = 'Editar Usuario';
-      // activeModal.componentInstance.idTalleres = id;
-
       const disposable = this.dialogService.addDialog(TallerEditModalComponent, taller)
-        .subscribe( data => {
-          setTimeout( () =>  this.showToast(data) , 1000);
-        });
+      .subscribe( data => {
+          if ( data ) 
+            this.showToast(data);
+      },
+      error => console.log(error),
+      () => console.log('Modified complete'));
     }
     
     onDeleteConfirm(event, id): void {
@@ -86,10 +85,15 @@ export class TalleresTableComponent implements OnInit {
     }
     
     showModalSearch() {
-      const disposable = this.dialogService.addDialog(TalleresAddModalComponent)
+      const disposable = this.dialogService.addDialog(TalleresAddModalComponent, { })
         .subscribe( data => {
-          if ( data !== undefined)
+          if ( data !== undefined) {
             this.showToast( data );
-        });
+          } else {
+            console.log('is undefined');
+          }
+        },
+        error => console.log(error),
+        () => console.log('Added complete'));
     }
 }

@@ -60,7 +60,7 @@ export class TalleresService {
 
 
     deleteTalleres = (id: string): Observable<TalleresInterface> => {
-        this.actionUrl = `${this._configuration.serverWithApiUrl}deleteTalleres/${id}`;
+        this.actionUrl = `${this._configuration.serverWithApiUrl}deleteTaller/${id}`;
         return this._http.delete(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <TalleresInterface>response.json())
             .catch(this.handleError);

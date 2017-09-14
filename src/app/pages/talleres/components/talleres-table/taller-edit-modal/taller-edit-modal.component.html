@@ -2,7 +2,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <div class="modal-content" style="overflow-y: initial !important">
-            <form [formGroup]="form" (ngSubmit)="onSubmit(form)" class="form-horizontal" >
+            <form [formGroup]="form" class="form-horizontal" >
               <div class="modal-header">
                 <h4 class="modal-title">Editar datos del taller</h4>
                 <button class="close" aria-label="Close">
@@ -51,7 +51,7 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
-                <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" type="submit" (click)="confirm()">Aceptar</button>
+                <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" type="submit" (click)="updateTaller(form)">Aceptar</button>
               </div>
             </form>
         </div>
