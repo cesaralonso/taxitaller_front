@@ -1,0 +1,98 @@
+<div class="widgets">
+    <div class="row">
+        <ba-card title="Listado" baCardClass="with-scroll" class="data-table-container">
+            <div class="panel panel-default">
+                <!-- <div class="panel-heading">Información de Vehiculos</div> -->
+
+                <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%"></th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="marca">Marca</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="modelo">Modelo</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="anio">Año</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="serie">Serie</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="placas">Placas</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="condicion_inicial">Condicion Inicial</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="condicion_actual">Condicion Actual</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="estaus_actividad">Estaus Actividad</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="baja">Baja</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="propietario_idpropietario">idpropietario</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="permiso_idpermiso">idpermiso</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="fecha_asigancion_permiso">Fecha Asigancion Permiso</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="chofer_idchofer">idchofer</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="created_by">Created By</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of vehiculosTable;  let i = index">
+                            <td>
+                                <button (click)="editVehiculosModalShow(item.idvehiculo)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idvehiculo)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                            <td>{{ item.marca }}</td>
+                            <td>{{ item.modelo }}</td>
+                            <td>{{ item.anio }}</td>
+                            <td>{{ item.serie }}</td>
+                            <td>{{ item.placas }}</td>
+                            <td>{{ item.descripcion }}</td>
+                            <td>{{ item.condicion_inicial }}</td>
+                            <td>{{ item.condicion_actual }}</td>
+                            <td>{{ item.estaus_actividad }}</td>
+                            <td>{{ item.baja }}</td>
+                            <td>{{ item.propietario_idpropietario }}</td>
+                            <td>{{ item.permiso_idpermiso }}</td>
+                            <td>{{ item.fecha_asigancion_permiso }}</td>
+                            <td>{{ item.chofer_idchofer }}</td>
+                            <td>{{ item.created_by }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </ba-card>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button (click)="showModalSearch()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
+        </div>
+    </div>
+    
+</div>
