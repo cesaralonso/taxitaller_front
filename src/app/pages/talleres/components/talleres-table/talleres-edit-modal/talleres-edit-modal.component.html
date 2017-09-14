@@ -1,133 +1,61 @@
-<div class="modal-content">
-  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
-    <div class="modal-header">
-      <h4 class="modal-title">{{modalHeader}} - {{id}}</h4>
-      <button class="close" aria-label="Close" (click)="closeModal()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+<div class="row mt-3">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="modal-content" style="overflow-y: initial !important">
+            <form [formGroup]="form" class="form-horizontal" >
+              <div class="modal-header">
+                <h4 class="modal-title">Editar datos del taller</h4>
+                <button class="close" aria-label="Close">
+                  <span aria-hidden="true" (click)="close()">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+                <ba-card cardTitle="Información del Taller">
+                    <div class="form-group row" [ngClass]="{'has-error': (!nombreAC.valid && nombreAC.touched), 'has-success': (nombreAC.valid && nombreAC.touched)}">
+                        <label for="inputnombre" class="col-sm-2 form-control-label">Nombre</label>
+                        <div class="col-sm-10">
+                          <input [(ngModel)]="nombre" [formControl]="nombreAC" type="text" class="form-control" id="inputnombre" placeholder="Nombre">
+                        </div>
+                      </div>
+                      <div class="form-group row" [ngClass]="{'has-error': (!direccionAC.valid && direccionAC.touched), 'has-success': (direccionAC.valid && direccionAC.touched)}">
+                        <label for="inputdireccion" class="col-sm-2 form-control-label">Dirección</label>
+                        <div class="col-sm-10">
+                          <input [(ngModel)]="direccion" [formControl]="direccionAC" type="text" class="form-control" id="inputdireccion" placeholder="Dirección">
+                        </div>
+                      </div>
+                      <div class="form-group row" [ngClass]="{'has-error': (!descripcionAC.valid && descripcionAC.touched), 'has-success': (descripcionAC.valid && descripcionAC.touched)}">
+                        <label for="inputdescripcion" class="col-sm-2 form-control-label">Descripción</label>
+                        <div class="col-sm-10">
+                          <input [(ngModel)]="descripcion" [formControl]="descripcionAC" type="text" class="form-control" id="inputdescripcion" placeholder="Descripción">
+                        </div>
+                      </div>
+                      <div class="form-group row" [ngClass]="{'has-error': (!telefonoAC.valid && telefonoAC.touched), 'has-success': (telefonoAC.valid && telefonoAC.touched)}">
+                        <label for="inputtelefono" class="col-sm-2 form-control-label">Teléfono</label>
+                        <div class="col-sm-10">
+                          <input [(ngModel)]="telefono" [formControl]="telefonoAC" type="text" class="form-control" id="inputtelefono" placeholder="Teléfono">
+                        </div>
+                      </div>
+                      <div class="form-group row" [ngClass]="{'has-error': (!latAC.valid && latAC.touched), 'has-success': (latAC.valid && latAC.touched)}">
+                        <label for="inputlat" class="col-sm-2 form-control-label">Lat</label>
+                        <div class="col-sm-10">
+                          <input [(ngModel)]="lat" [formControl]="latAC" type="text" class="form-control" id="inputlat" placeholder="Lat">
+                        </div>
+                      </div>
+                      <div class="form-group row" [ngClass]="{'has-error': (!lngAC.valid && lngAC.touched), 'has-success': (lngAC.valid && lngAC.touched)}">
+                        <label for="inputlng" class="col-sm-2 form-control-label">Lng</label>
+                        <div class="col-sm-10">
+                          <input [(ngModel)]="lng" [formControl]="lngAC" type="text" class="form-control" id="inputlng" placeholder="Lng">
+                        </div>
+                      </div>
+                </ba-card>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+                <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" type="submit" (click)="updateTaller(form)">Aceptar</button>
+              </div>
+            </form>
+        </div>
     </div>
-    <div class="modal-body">
-      <ba-card cardTitle="Información de la Obra">
-        
-        <div class="form-group row" [ngClass]="{'has-error': (!descripcion.valid && descripcion.touched), 'has-success': (descripcion.valid && descripcion.touched)}">
-          <label for="inputdescripcion" class="col-sm-2 form-control-label">Descripción</label>
-          <div class="col-sm-10">
-            <input [formControl]="descripcion" type="text" class="form-control" id="inputdescripcion" placeholder="Descripción" value="{{obra.descripcion}}">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!direccion.valid && direccion.touched), 'has-success': (direccion.valid && direccion.touched)}">
-          <label for="inputdireccion" class="col-sm-2 form-control-label">Dirección</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.direccion" [formControl]="direccion" type="text" class="form-control" id="inputdireccion" placeholder="Dirección">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!medidasterreno.valid && medidasterreno.touched), 'has-success': (medidasterreno.valid && medidasterreno.touched)}">
-          <label for="inputmedidasterreno" class="col-sm-2 form-control-label">Medidas del Terreno</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.medidasterreno" [formControl]="medidasterreno" type="text" class="form-control" id="inputmedidasterreno" placeholder="Medidas del Terreno">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!medidasconstruccion.valid && medidasconstruccion.touched), 'has-success': (medidasconstruccion.valid && medidasconstruccion.touched)}">
-          <label for="inputmedidasconstruccion" class="col-sm-2 form-control-label">Medidas de Construcción</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.medidasconstruccion" [formControl]="medidasconstruccion" type="text" class="form-control" id="inputmedidasconstruccion" placeholder="Medidas de Construcción">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!fechainicio.valid && fechainicio.touched), 'has-success': (fechainicio.valid && fechainicio.touched)}">
-          <label for="inputfechainicio" class="col-sm-2 form-control-label">Fecha de inicio</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.fechainicio" [formControl]="fechainicio" type="date" class="form-control" id="inputfechainicio" placeholder="Fecha de inicio">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!fechafin.valid && fechafin.touched), 'has-success': (fechafin.valid && fechafin.touched)}">
-          <label for="inputfechafin" class="col-sm-2 form-control-label">Fecha de Fin</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.fechafin" [formControl]="fechafin" type="date" class="form-control" id="inputfechafin" placeholder="Fecha de Fin">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!idtipoobra.valid && idtipoobra.touched), 'has-success': (idtipoobra.valid && idtipoobra.touched)}">
-          <label for="inputidtipoobra" class="col-sm-2 form-control-label">Tipo Obra</label>
-          <div class="col-sm-10">
-            <select [(ngModel)]="obra.idtipoobra" id="idtipoobra" class="form-control" [formControl]="idtipoobra">
-              <option value="{{value.idtipoobra}}" *ngFor="let value of _tipoobra">
-                {{value.descripcion}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!presupuesto.valid && presupuesto.touched), 'has-success': (presupuesto.valid && presupuesto.touched)}">
-          <label for="inputpresupuesto" class="col-sm-2 form-control-label">Presupuesto</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.presupuesto" [formControl]="presupuesto" type="text" class="form-control" id="inputpresupuesto" placeholder="Presupuesto">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!idrazonsocialcliente.valid && idrazonsocialcliente.touched), 'has-success': (idrazonsocialcliente.valid && idrazonsocialcliente.touched)}">
-          <label for="inputidrazonsocialcliente" class="col-sm-2 form-control-label">Razón Social Cliente</label>
-          <div class="col-sm-10">
-            <select [(ngModel)]="obra.idrazonsocialcliente" id="idrazonsocialcliente" class="form-control" [formControl]="idrazonsocialcliente">
-              <option value="{{value.idrazonsocial}}" *ngFor="let value of _razonsocialcliente">
-                {{value.razonsocial}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!idrazonsocialcontratista.valid && idrazonsocialcontratista.touched), 'has-success': (idrazonsocialcontratista.valid && idrazonsocialcontratista.touched)}">
-          <label for="inputidrazonsocialcontratista" class="col-sm-2 form-control-label">Razón Social Contratista</label>
-          <div class="col-sm-10">
-            <select [(ngModel)]="obra.idrazonsocialcontratista" id="idrazonsocialcontratista" class="form-control" [formControl]="idrazonsocialcontratista">
-              <option value="{{value.idrazonsocial}}" *ngFor="let value of _razonsocialcontratista">
-                {{value.razonsocial}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!idrazonsocialconstructor.valid && idrazonsocialconstructor.touched), 'has-success': (idrazonsocialconstructor.valid && idrazonsocialconstructor.touched)}">
-          <label for="inputidrazonsocialconstructor" class="col-sm-2 form-control-label">Razón Social Constructor</label>
-          <div class="col-sm-10">
-            <select [(ngModel)]="obra.idrazonsocialconstructor" id="idrazonsocialconstructor" class="form-control" [formControl]="idrazonsocialconstructor">
-              <option value="{{value.idrazonsocial}}" *ngFor="let value of _razonsocialconstructor">
-                {{value.razonsocial}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!idrazonsocialasociado.valid && idrazonsocialasociado.touched), 'has-success': (idrazonsocialasociado.valid && idrazonsocialasociado.touched)}">
-          <label for="inputidrazonsocialasociado" class="col-sm-2 form-control-label">Razón Social Asociado</label>
-          <div class="col-sm-10">
-            <select [(ngModel)]="obra.idrazonsocialasociado" id="idrazonsocialasociado" class="form-control" [formControl]="idrazonsocialasociado">
-              <option value="{{value.idrazonsocial}}" *ngFor="let value of _razonsocialasociado">
-                {{value.razonsocial}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!posiciongps.valid && posiciongps.touched), 'has-success': (posiciongps.valid && posiciongps.touched)}">
-          <label for="inputposiciongps" class="col-sm-2 form-control-label">Posición GPS</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.posiciongps" [formControl]="posiciongps" type="text" class="form-control" id="inputposiciongps" placeholder="Posición GPS">
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!idestatusobra.valid && idestatusobra.touched), 'has-success': (idestatusobra.valid && idestatusobra.touched)}">
-          <label for="inputidestatusobra" class="col-sm-2 form-control-label">Estatus Obra</label>
-          <div class="col-sm-10">
-            <select [(ngModel)]="obra.idestatusobra" id="idestatusobra" class="form-control" [formControl]="idestatusobra">
-              <option value="{{value.idestatusobra}}" *ngFor="let value of _estatustalleres">
-                {{value.descripcion}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-error': (!observaciones.valid && observaciones.touched), 'has-success': (observaciones.valid && observaciones.touched)}">
-          <label for="inputobservaciones" class="col-sm-2 form-control-label">Observaciones</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="obra.observaciones" [formControl]="observaciones" type="text" class="form-control" id="inputobservaciones" placeholder="Observaciones">
-          </div>
-        </div>
-      </ba-card>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-danger cancel-btn" (click)="closeModal()">Cancelar</button>
-      <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" type="submit">Aceptar</button>
-    </div>
-  </form>
+    <div class="col-md-2"></div>    
 </div>
+  

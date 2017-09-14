@@ -14,7 +14,6 @@ import { TalleresComponent } from './talleres.component';
 
 import { TalleresEditModalComponent } from './components/talleres-table/talleres-edit-modal/talleres-edit-modal.component';
 import { TalleresService } from './components/talleres-table/talleres.service';
-import { TallerEditModalComponent } from './components/talleres-table/taller-edit-modal/taller-edit-modal.component';
 import { TalleresAddModalComponent } from './components/talleres-table/talleres-add-modal/talleres-add-modal.component';
 
 import { TalleresTableComponent } from './components/talleres-table/talleres-table.component';
@@ -39,12 +38,10 @@ import { DataFilterPipe } from './components/talleres-table/data-filter.pipe';
     DataFilterPipe,
     TalleresEditModalComponent,
     TalleresAddModalComponent,
-    TallerEditModalComponent,
   ],
   entryComponents: [
-    TalleresEditModalComponent,
     TalleresAddModalComponent,
-    TallerEditModalComponent
+    TalleresEditModalComponent,
   ],
   providers: [
     TalleresService

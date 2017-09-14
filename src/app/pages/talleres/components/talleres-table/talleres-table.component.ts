@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 import { TalleresService } from './talleres.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TalleresEditModalComponent } from './talleres-edit-modal/talleres-edit-modal.component';
-import { TallerEditModalComponent } from './taller-edit-modal/taller-edit-modal.component';
 
 @Component({
   selector: 'talleres-table',
@@ -37,7 +36,7 @@ export class TalleresTableComponent implements OnInit {
     }
 
     editTalleresModalShow( taller ) {
-      const disposable = this.dialogService.addDialog(TallerEditModalComponent, taller)
+      const disposable = this.dialogService.addDialog(TalleresEditModalComponent, taller)
       .subscribe( data => {
           if ( data ) 
             this.showToast(data);
