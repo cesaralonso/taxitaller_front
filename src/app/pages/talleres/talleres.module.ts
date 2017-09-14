@@ -43,7 +43,8 @@ import { DataFilterPipe } from './components/talleres-table/data-filter.pipe';
   ],
   entryComponents: [
     TalleresEditModalComponent,
-    TalleresAddModalComponent
+    TalleresAddModalComponent,
+    TallerEditModalComponent
   ],
   providers: [
     TalleresService

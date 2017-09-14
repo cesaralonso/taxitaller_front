@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { TalleresService } from './talleres.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TalleresEditModalComponent } from './talleres-edit-modal/talleres-edit-modal.component';
+import { TallerEditModalComponent } from './taller-edit-modal/taller-edit-modal.component';
 
 @Component({
   selector: 'talleres-table',
@@ -35,10 +36,15 @@ export class TalleresTableComponent implements OnInit {
         return +num;
     }
 
-    editTalleresModalShow(id: any) {
-      const activeModal = this.modalService.open(TalleresEditModalComponent, { size: 'lg' });
-      activeModal.componentInstance.modalHeader = 'Editar Usuario';
-      activeModal.componentInstance.idTalleres = id;
+    editTalleresModalShow( taller ) {
+      // const activeModal = this.modalService.open(TalleresEditModalComponent, { size: 'lg' });
+      // activeModal.componentInstance.modalHeader = 'Editar Usuario';
+      // activeModal.componentInstance.idTalleres = id;
+
+      const disposable = this.dialogService.addDialog(TallerEditModalComponent, taller)
+        .subscribe( data => {
+          setTimeout( () =>  this.showToast(data) , 1000);
+        });
     }
     
     onDeleteConfirm(event, id): void {
@@ -82,6 +88,7 @@ export class TalleresTableComponent implements OnInit {
     showModalSearch() {
       const disposable = this.dialogService.addDialog(TalleresAddModalComponent)
         .subscribe( data => {
+          if ( data !== undefined)
             this.showToast( data );
         });
     }

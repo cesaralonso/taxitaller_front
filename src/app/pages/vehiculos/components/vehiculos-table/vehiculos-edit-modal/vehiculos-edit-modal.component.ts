@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-vehiculo-edit-modal',
-    templateUrl: './vehiculo-edit-modal.component.html'
+    selector: 'app-vehiculos-edit-modal',
+    templateUrl: './vehiculos-edit-modal.component.html'
 })
 
 export class VehiculosEditModalComponent implements OnInit {
