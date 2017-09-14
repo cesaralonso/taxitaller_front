@@ -13,7 +13,7 @@ import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 export class TallerAddModalComponent extends DialogComponent<TalleresInterface, any> implements OnInit  {
 
-    taller: TalleresInterface = {
+    public taller: TalleresInterface = {
         nombre: '',
         direccion: '',
         descripcion: '',
@@ -24,8 +24,11 @@ export class TallerAddModalComponent extends DialogComponent<TalleresInterface, 
         created_at: '',
         created_by: '',
     };
-
-    // Bind with ngmodel to html view
+    public response: any = {
+        status: 'success',
+        message: 'Ha sido agregado correctamente',
+        data: this.taller,
+    };
 
     modalHeader: string;
     
@@ -73,7 +76,8 @@ export class TallerAddModalComponent extends DialogComponent<TalleresInterface, 
     confirm() {
         // we set dialog result as true on click on confirm button,
         // then we can get dialog result from caller code
-        this.result = {lel: 'ee'};
+
+        this.result = this.response;
         this.close();
     }
 
@@ -83,6 +87,7 @@ export class TallerAddModalComponent extends DialogComponent<TalleresInterface, 
                 .subscribe((data: any) => {
                     // Toast is going to be displayed in the other component
                     // this.showToast(data, val)
+                    // this.response = data;
                     confirm();
                 });
         }

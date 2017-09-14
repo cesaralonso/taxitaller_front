@@ -35,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of mf.data;  let i = index">
+                        <tr *ngFor="let item of talleresTable;  let i = index">
                             <td>
                                 <button (click)="editTalleresModalShow(item.idtaller)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
                                 <button (click)="onDeleteConfirm($event, item.idtaller)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>

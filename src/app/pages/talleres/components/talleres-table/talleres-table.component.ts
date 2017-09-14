@@ -21,6 +21,7 @@ export class TalleresTableComponent implements OnInit {
     rowsOnPage = 10;
     sortBy = 'idTaller';
     sortOrder = 'asc';
+    talleresTable: TalleresInterface[];
 
   constructor(
     private service: TalleresService, 
@@ -28,6 +29,7 @@ export class TalleresTableComponent implements OnInit {
     private toastrService: ToastrService,
     private dialogService: DialogService,
   ) {
+    this.talleresTable = [];
   }
 
     toInt(num: string) {
@@ -96,8 +98,10 @@ export class TalleresTableComponent implements OnInit {
         created_by: 'string',
     
       }).subscribe( data => {
-        console.log(data);
+          if ( data.status === 'success' ) {
+            this.talleresTable.push( data.data );
+            this.showToast( data );
+          }
       });
     }
-
 }

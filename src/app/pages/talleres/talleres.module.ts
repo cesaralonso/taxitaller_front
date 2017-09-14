@@ -1,4 +1,3 @@
-import { TallerAddModalComponent } from './components/talleres-table/taller-add-modal/taller-add-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule as AngularFormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +15,8 @@ import { TalleresComponent } from './talleres.component';
 import { TalleresAddModalComponent } from './components/talleres-table/talleres-add-modal/talleres-add-modal.component';
 import { TalleresEditModalComponent } from './components/talleres-table/talleres-edit-modal/talleres-edit-modal.component';
 import { TalleresService } from './components/talleres-table/talleres.service';
+import { TallerEditModalComponent } from './components/talleres-table/taller-edit-modal/taller-edit-modal.component';
+import { TallerAddModalComponent } from './components/talleres-table/taller-add-modal/taller-add-modal.component';
 
 import { TalleresTableComponent } from './components/talleres-table/talleres-table.component';
 import { DataFilterPipe } from './components/talleres-table/data-filter.pipe';
@@ -39,7 +40,8 @@ import { DataFilterPipe } from './components/talleres-table/data-filter.pipe';
     DataFilterPipe,
     TalleresAddModalComponent,
     TalleresEditModalComponent,
-    TallerAddModalComponent
+    TallerAddModalComponent,
+    TallerEditModalComponent,
   ],
   entryComponents: [
     TalleresAddModalComponent,
