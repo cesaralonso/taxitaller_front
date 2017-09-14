@@ -13,7 +13,7 @@ import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 export class TallerAddModalComponent extends DialogComponent<TalleresInterface, any> implements OnInit  {
 
-    public taller: TalleresInterface = {
+    taller: TalleresInterface = {
         nombre: '',
         direccion: '',
         descripcion: '',

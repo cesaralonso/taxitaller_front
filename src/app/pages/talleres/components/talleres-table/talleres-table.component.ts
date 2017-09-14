@@ -62,7 +62,7 @@ export class TalleresTableComponent implements OnInit {
     showToast(data) {
       if (data.status === 'success') {
         this.toastrService.success(data.message);
-        this.getAllTalleress();
+        this.getAllTalleres();
       } else if (data.status === 'warning') {
         this.toastrService.warning(data.message);
       } else {
@@ -71,10 +71,10 @@ export class TalleresTableComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getAllTalleress();
+        this.getAllTalleres();
     }
     
-    private getAllTalleress(): void {
+    private getAllTalleres(): void {
         this.service
           .getAllTalleres()
           .subscribe(

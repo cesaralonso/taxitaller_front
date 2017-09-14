@@ -31,11 +31,11 @@ export class TalleresAddModalComponent implements OnInit {s
   submitted: boolean = false;
 
   nombre: AbstractControl;
-  direccion : AbstractControl;
-  descripcion : AbstractControl;
-  telefono : AbstractControl;
-  lat : AbstractControl;
-  lng : AbstractControl;
+  direccion: AbstractControl;
+  descripcion: AbstractControl;
+  telefono: AbstractControl;
+  lat: AbstractControl;
+  lng: AbstractControl;
 
   constructor(private service: TalleresService,
               private activeModal: NgbActiveModal,

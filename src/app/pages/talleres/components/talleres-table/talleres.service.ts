@@ -37,7 +37,7 @@ export class TalleresService {
     }
 
     editTalleres = (taller: TalleresInterface): Observable<TalleresResponseInterface> => {
-        this.actionUrl = `${this._configuration.serverWithApiUrl}putTalleres/${taller.idtaller}`;
+        this.actionUrl = `${this._configuration.serverWithApiUrl}putTalleres/${taller.data.idtaller}`;
         const toAdd = JSON.stringify(taller);
         return this._http.put(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <TalleresResponseInterface>response.json())
