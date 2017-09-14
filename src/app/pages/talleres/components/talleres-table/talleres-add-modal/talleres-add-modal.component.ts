@@ -37,36 +37,31 @@ export class TalleresAddModalComponent implements OnInit {s
   lat: AbstractControl;
   lng: AbstractControl;
 
-  constructor(private service: TalleresService,
-              private activeModal: NgbActiveModal,
-              fb: FormBuilder,
-              private toastrService: ToastrService,
-              private authLocalstorage: AuthLocalstorage) {
-    
-    // this._estatustalleres = [];
-    // this._razonsocialasociado = [];
-    // this._razonsocialconstructor = [];
-    // this._razonsocialcontratista = [];
-    // this._razonsocialcliente = [];
-    // this._tipoobra = [];
+  constructor(
+    private service: TalleresService,
+    private activeModal: NgbActiveModal,
+    fb: FormBuilder,
+    private toastrService: ToastrService,
+    private authLocalstorage: AuthLocalstorage
+  ) {
 
-    this.form = fb.group({
-
-      'nombre' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'direccion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'descripcion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'telefono' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'lat' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-      'lng' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      this.form = fb.group({
+  
+        'nombre' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+        'direccion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+        'descripcion' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+        'telefono' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+        'lat' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+        'lng' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+        
+      });
       
-    });
-    
-    this.nombre = this.form.controls['nombre'];
-    this.direccion = this.form.controls['direccion'];
-    this.descripcion = this.form.controls['descripcion'];
-    this.telefono = this.form.controls['telefono'];
-    this.lat = this.form.controls['lat'];
-    this.lng = this.form.controls['lng'];
+      this.nombre = this.form.controls['nombre'];
+      this.direccion = this.form.controls['direccion'];
+      this.descripcion = this.form.controls['descripcion'];
+      this.telefono = this.form.controls['telefono'];
+      this.lat = this.form.controls['lat'];
+      this.lng = this.form.controls['lng'];
   }
 
 

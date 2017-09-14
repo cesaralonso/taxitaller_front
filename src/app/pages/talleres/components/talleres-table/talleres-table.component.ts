@@ -21,7 +21,7 @@ export class TalleresTableComponent implements OnInit {
     rowsOnPage = 10;
     sortBy = 'idTaller';
     sortOrder = 'asc';
-    talleresTable: TalleresInterface[];
+    talleresTable: any;
 
   constructor(
     private service: TalleresService, 
@@ -80,28 +80,15 @@ export class TalleresTableComponent implements OnInit {
         this.service
           .getAllTalleres()
           .subscribe(
-              (data: TalleresInterface) => this.data = data,
+              data => this.data =  data.data ),
               error => console.log(error),
-              () => console.log('Get all Items complete'));
+              () => console.log('Get all Items complete');
     }
     
     showModalSearch() {
-      const disposable = this.dialogService.addDialog(TallerAddModalComponent, {
-        nombre: 'string',
-        direccion: 'string',
-        descripcion: 'string',
-        telefono: 'string',
-        lat: 'string',
-        lng: 'string',
-        baja: true,
-        created_at: 'string',
-        created_by: 'string',
-    
-      }).subscribe( data => {
-          if ( data.status === 'success' ) {
-            this.talleresTable.push( data.data );
+      const disposable = this.dialogService.addDialog(TallerAddModalComponent)
+        .subscribe( data => {
             this.showToast( data );
-          }
-      });
+        });
     }
 }

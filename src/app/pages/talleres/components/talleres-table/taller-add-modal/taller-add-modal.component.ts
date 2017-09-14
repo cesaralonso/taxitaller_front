@@ -24,11 +24,8 @@ export class TallerAddModalComponent extends DialogComponent<TalleresInterface, 
         created_at: '',
         created_by: '',
     };
-    public response: any = {
-        status: 'success',
-        message: 'Ha sido agregado correctamente',
-        data: this.taller,
-    };
+
+    data: any;
 
     modalHeader: string;
     
@@ -74,21 +71,16 @@ export class TallerAddModalComponent extends DialogComponent<TalleresInterface, 
     ngOnInit() { }
     
     confirm() {
-        // we set dialog result as true on click on confirm button,
-        // then we can get dialog result from caller code
-
-        this.result = this.response;
+        this.result = this.data;
         this.close();
     }
 
-    onSubmit( val ) {
-        if (this.form.valid) {
-            this.talleresService.addTalleres(val)
-                .subscribe((data: any) => {
-                    // Toast is going to be displayed in the other component
-                    // this.showToast(data, val)
-                    // this.response = data;
-                    confirm();
+    onSubmit( form ) {
+        if (form.valid) {
+            this.talleresService.addTalleres( this.taller )
+                .subscribe((data: any) => {                        
+                    this.data = data;
+                    this.confirm();
                 });
         }
     }

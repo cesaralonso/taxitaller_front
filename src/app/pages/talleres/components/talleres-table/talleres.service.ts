@@ -29,7 +29,7 @@ export class TalleresService {
 
 
     addTalleres = (taller: TalleresInterface): Observable<TalleresResponseInterface> => {
-        this.actionUrl = `${this._configuration.serverWithApiUrl}signup`;
+        this.actionUrl = `${this._configuration.serverWithApiUrl}postTaller`;
         const toAdd = JSON.stringify(taller);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <TalleresResponseInterface>response.json())
@@ -47,14 +47,14 @@ export class TalleresService {
     getTalleres = (id: number): Observable<TalleresInterface> => {
         this.actionUrl = `${this._configuration.serverWithApiUrl}getTalleres/${id}`;
         return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <TalleresInterface>response.json())
+            .map((response: Response) => {<TalleresInterface>response.json()})
             .catch(this.handleError);
     }
 
-    getAllTalleres = (): Observable<TalleresInterface> => {
+    getAllTalleres = (): Observable<TalleresResponseInterface> => {
         this.actionUrl = `${this._configuration.serverWithApiUrl}getTalleres`;
         return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <TalleresInterface>response.json())
+            .map((response: Response) => <TalleresResponseInterface>response.json())
             .catch(this.handleError);
     }
 
