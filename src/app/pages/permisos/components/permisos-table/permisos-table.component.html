@@ -8,10 +8,10 @@
                         <thead>
                             <tr>
                                 <th style="width: 10%"></th>
-                                <th style="width: 5%">
+                                <th style="width: 15%">
                                     <mfDefaultSorter by="nombre">Permiso</mfDefaultSorter>
                                 </th>
-                                <th style="width: 10%">
+                                <th style="width: 15%">
                                     <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
                                 </th>
                                 <th style="width: 10%">
@@ -20,10 +20,10 @@
                                 <th style="width: 10%">
                                     <mfDefaultSorter by="lat">Vigencia</mfDefaultSorter>
                                 </th>
-                                <th style="width: 10%">
+                                <th style="width: 5%">
                                     <mfDefaultSorter by="lng">Liquidación diraria</mfDefaultSorter>
                                 </th>
-                                <th style="width: 10%">
+                                <th style="width: 5%">
                                     <mfDefaultSorter by="lng">Liquidación domingo</mfDefaultSorter>
                                 </th>
                                 <th style="width: 5%">
@@ -40,8 +40,8 @@
                         <tbody>
                             <tr *ngFor="let item of mf.data;  let i = index">
                                 <td>
-                                    <button  class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                    <button  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-info" ><i class="fa fa-edit"></i></button>
+                                    <button (click)="onDeleteConfirm($event, item.idpermiso)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                 </td>
                                 <td>{{ item.permiso }}</td>
                                 <td>{{ item.descripcion }}</td>
