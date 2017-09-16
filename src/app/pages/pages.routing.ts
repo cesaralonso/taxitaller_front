@@ -36,6 +36,7 @@ export const routes: Routes = [
       { path: 'permisos', loadChildren: './permisos/permisos.module#PermisosModule', canActivateChild: [AuthGuard] },
       { path: 'talleres', loadChildren: './talleres/talleres.module#TalleresModule', canActivateChild: [AuthGuard] },
       { path: 'vehiculos', loadChildren: './vehiculos/vehiculos.module#VehiculosModule', canActivateChild: [AuthGuard] },
+      { path: 'liquidaciones', loadChildren: './liquidaciones/liquidaciones.module#LiquidacionesModule', canActivateChild: [AuthGuard] },
       { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivateChild: [AuthGuard] }
     ]
   }
