@@ -15,6 +15,7 @@ import { VehiculosComponent } from './vehiculos.component';
 import { VehiculosAddModalComponent } from './components/vehiculos-table/vehiculos-add-modal/vehiculos-add-modal.component';
 import { VehiculosEditModalComponent } from './components/vehiculos-table/vehiculos-edit-modal/vehiculos-edit-modal.component';
 import { VehiculosService } from './components/vehiculos-table/vehiculos.service';
+import { LOCALE_ID } from '@angular/core';
 
 import { VehiculosTableComponent } from './components/vehiculos-table/vehiculos-table.component';
 import { DataFilterPipe } from './components/vehiculos-table/data-filter.pipe';
@@ -44,7 +45,8 @@ import { DataFilterPipe } from './components/vehiculos-table/data-filter.pipe';
     VehiculosAddModalComponent
   ],
   providers: [
-    VehiculosService
+    VehiculosService,
+    { provide: LOCALE_ID, useValue: "es-MX" }
   ]
 })
 export class VehiculosModule {

@@ -62,19 +62,19 @@ export class PermisosTableComponent implements OnInit {
     
     onDeleteConfirm(event, id): void {
       const disposable = this.dialogService.addDialog( ConfirmModalComponent, {
-        title: ' Eiminar taller',
-        message: '¿Estas seguro que deseas eliminar este taller?',
+        title: ' Eiminar permiso',
+        message: '¿Estas seguro que deseas eliminar este permiso?',
       }).subscribe( isDeleted => {
-        // if ( isDeleted ) {
-        //   this.service.deleteTalleres(id)
-        //       .subscribe(
-        //         (data) => this.showToast(data),
-        //         error => console.log(error),
-        //         () => console.log('Delete completed')
-        //       );
-        // } else {
-        //   console.log('item.id cancelando', id);
-        // }
+        if ( isDeleted ) {
+          this.permisosService.deletePermisos(id)
+              .subscribe(
+                (data) => this.showToast(data),
+                error => console.log(error),
+                () => console.log('Delete completed')
+              );
+        } else {
+          console.log('item.id cancelando', id);
+        }
       })
     }
 
