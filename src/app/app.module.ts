@@ -11,8 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 /*
- * Platform and Environment providers/directives/pipes
- */
+* Platform and Environment providers/directives/pipes
+*/
 import { routing } from './app.routing';
 // Configuración
 import { Configuration } from './app.constants';
@@ -26,6 +26,7 @@ import { PagesModule } from './pages/pages.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ConfirmModalComponent } from './shared/confirm-modal/confirm-modal.component';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
 
@@ -48,7 +49,8 @@ export type StoreType = {
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App
+    App,
+    ConfirmModalComponent,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -74,6 +76,9 @@ export type StoreType = {
     AuthGuard,
     AuthService,
     AuthLocalstorage
+  ],
+  entryComponents: [
+    ConfirmModalComponent
   ]
 })
 

@@ -1,3 +1,4 @@
+import { ConfirmModalComponent } from './../../../../shared/confirm-modal/confirm-modal.component';
 import { TalleresAddModalComponent } from './talleres-add-modal/talleres-add-modal.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -46,17 +47,21 @@ export class TalleresTableComponent implements OnInit {
     }
     
     onDeleteConfirm(event, id): void {
-      if (window.confirm('¿Estas seguro de querer eliminar este registro?')) {
-        this.service.deleteTalleres(id)
-          .subscribe(
-            (data) => this.showToast(data),
-            error => console.log(error),
-            () => console.log('Delete completed')
-          );
-
-      } else {
-        console.log('item.id cancelando', id);
-      }
+      const disposable = this.dialogService.addDialog( ConfirmModalComponent, {
+        title: ' Eiminar taller',
+        message: '¿Estas seguro que deseas eliminar este taller?',
+      }).subscribe( isDeleted => {
+        if ( isDeleted ) {
+          this.service.deleteTalleres(id)
+              .subscribe(
+                (data) => this.showToast(data),
+                error => console.log(error),
+                () => console.log('Delete completed')
+              );
+        } else {
+          console.log('item.id cancelando', id);
+        }
+      })
     }
 
     showToast(data) {
@@ -83,7 +88,7 @@ export class TalleresTableComponent implements OnInit {
               () => console.log('Get all Items complete');
     }
     
-    showModalSearch() {
+    addTalleresModal() {
       const disposable = this.dialogService.addDialog(TalleresAddModalComponent, { })
         .subscribe( data => {
           if ( data !== undefined) {

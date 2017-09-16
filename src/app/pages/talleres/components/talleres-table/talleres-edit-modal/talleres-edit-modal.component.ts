@@ -71,7 +71,7 @@ export class TalleresEditModalComponent extends DialogComponent<TalleresInterfac
         console.log('submitted');
         if (form.valid) {
             this.talleresService.editTalleres( {
-                data:  {
+                data: {
                     idtaller: this.idtaller,
                     nombre: this.nombre,
                     direccion: this.direccion,

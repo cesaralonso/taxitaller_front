@@ -33,6 +33,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule',
         canActivateChild: [AuthGuard] },
+      { path: 'permisos', loadChildren: './permisos/permisos.module#PermisosModule', canActivateChild: [AuthGuard] },
       { path: 'talleres', loadChildren: './talleres/talleres.module#TalleresModule', canActivateChild: [AuthGuard] },
       { path: 'vehiculos', loadChildren: './vehiculos/vehiculos.module#VehiculosModule', canActivateChild: [AuthGuard] },
       { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivateChild: [AuthGuard] }

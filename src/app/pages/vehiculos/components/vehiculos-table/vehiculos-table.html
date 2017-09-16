@@ -2,7 +2,7 @@
     <div class="row">
         <ba-card title="Listado" baCardClass="with-scroll" class="data-table-container">
             <div class="panel panel-default">
-                <!-- <div class="panel-heading">Información de Vehiculos</div> -->
+                <div class="panel-heading">Información de Vehiculos</div>
 
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
@@ -56,9 +56,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of vehiculosTable;  let i = index">
+                        <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
-                                <button (click)="editVehiculosModalShow(item.idvehiculo)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                <button (click)="editTalleresModal(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
                                 <button (click)="onDeleteConfirm($event, item.idvehiculo)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                             </td>
                             <td>{{ item.marca }}</td>
@@ -91,7 +91,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <button (click)="showModalSearch()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
+            <button (click)="addVehiculosModal()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
         </div>
     </div>
     

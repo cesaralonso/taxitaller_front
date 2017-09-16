@@ -1,5 +1,5 @@
-import { VehiculosInterface } from './../vehiculos.interface';
 import { VehiculosService } from './../vehiculos.service';
+import { VehiculosInterface } from './../vehiculos.interface';
 import { AuthLocalstorage } from './../../../../../shared/auth-localstorage.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -7,16 +7,16 @@ import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 
 @Component({
-    selector: 'vehiculos-add-modal',
+    selector: 'vehiculo-add-modal',
     templateUrl: './vehiculos-add-modal.component.html'
 })
 
 export class VehiculosAddModalComponent extends DialogComponent<VehiculosInterface, any> implements OnInit  {
 
-    taller: VehiculosInterface = {
+    public vehiculo: VehiculosInterface = {
         marca: '',
         modelo: '',
-        anio: 0,
+        anio: 1999,
         serie: '',
         placas: '',
         descripcion: '',
@@ -39,60 +39,61 @@ export class VehiculosAddModalComponent extends DialogComponent<VehiculosInterfa
     form: FormGroup;
     submitted: boolean = false;
 
-    marca: AbstractControl;
-    modelo: AbstractControl;
-    anio: AbstractControl;
-    serie: AbstractControl;
-    placas: AbstractControl;
-    descripcion: AbstractControl;
-    condicion_inicial: AbstractControl;
-    condicion_actual: AbstractControl;
-    estaus_actividad: AbstractControl;
-    propietario_idpropietario: AbstractControl;
-    permiso_idpermiso: AbstractControl;
-    fecha_asigancion_permiso: AbstractControl;
-    chofer_idchofer: AbstractControl;
-
-
+    marcaAC: AbstractControl
+    modeloAC: AbstractControl
+    anioAC: AbstractControl
+    serieAC: AbstractControl
+    placasAC: AbstractControl
+    descripcionAC: AbstractControl
+    condicion_inicialAC: AbstractControl
+    condicion_actualAC: AbstractControl
+    estaus_actividadAC: AbstractControl
+    propietario_idpropietarioAC: AbstractControl
+    permiso_idpermisoAC: AbstractControl
+    fecha_asigancion_permisoAC: AbstractControl
+    chofer_idchoferAC: AbstractControl
 
     constructor( 
         dialogService: DialogService,
         fb: FormBuilder,
         private authLocalstorage: AuthLocalstorage,
-        private vehiculosService: VehiculosService,
+        private talleresService: VehiculosService
     ) {
         super(dialogService);
 
         this.form = fb.group({
-            marca:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            modelo:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            anio:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            serie:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            placas:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            descripcion:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            condicion_inicial:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            condicion_actual:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            estaus_actividad:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            propietario_idpropietario:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            permiso_idpermiso:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            fecha_asigancion_permiso:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            chofer_idchofer:['', Validators.compose([Validators.required, Validators.minLength(1)])],
-        });
             
-        this.marca = this.form.controls['marca'];
-        this.modelo = this.form.controls['modelo'];
-        this.anio = this.form.controls['anio'];
-        this.serie = this.form.controls['serie'];
-        this.placas = this.form.controls['placas'];
-        this.descripcion = this.form.controls['descripcion'];
-        this.condicion_inicial = this.form.controls['condicion_inicial'];
-        this.condicion_actual = this.form.controls['condicion_actual'];
-        this.estaus_actividad = this.form.controls['estaus_actividad'];
-        this.propietario_idpropietario = this.form.controls['propietario_idpropietario'];
-        this.permiso_idpermiso = this.form.controls['permiso_idpermiso'];
-        this.fecha_asigancion_permiso = this.form.controls['fecha_asigancion_permiso'];
-        this.chofer_idchofer = this.form.controls['chofer_idchofer'];
+            'marcaAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'modeloAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'anioAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'serieAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'placasAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'descripcionAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'condicion_inicialAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'condicion_actualAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'estaus_actividadAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'propietario_idpropietarioAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'permiso_idpermisoAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'fecha_asigancion_permisoAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'chofer_idchoferAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+        });
+                
+        this.marcaAC = this.form.controls['marcaAC'];
+        this.modeloAC = this.form.controls['modeloAC'];
+        this.anioAC = this.form.controls['anioAC'];
+        this.serieAC = this.form.controls['serieAC'];
+        this.placasAC = this.form.controls['placasAC'];
+        this.descripcionAC = this.form.controls['descripcionAC'];
+        this.condicion_inicialAC = this.form.controls['condicion_inicialAC'];
+        this.condicion_actualAC = this.form.controls['condicion_actualAC'];
+        this.estaus_actividadAC = this.form.controls['estaus_actividadAC'];
+        this.propietario_idpropietarioAC = this.form.controls['propietario_idpropietarioAC'];
+        this.permiso_idpermisoAC = this.form.controls['permiso_idpermisoAC'];
+        this.fecha_asigancion_permisoAC = this.form.controls['fecha_asigancion_permisoAC'];
+        this.chofer_idchoferAC = this.form.controls['chofer_idchoferAC'];            
      }
+
+
 
     ngOnInit() { }
     
@@ -103,13 +104,13 @@ export class VehiculosAddModalComponent extends DialogComponent<VehiculosInterfa
 
     onSubmit( form ) {
         if (form.valid) {
-            this.vehiculosService.addVehiculos( this.taller )
-                .subscribe((data: any) => {                        
+            this.talleresService.addVehiculos( this.vehiculo )
+                .subscribe((data: any) => {  
+                    console.log(data);
                     this.data = data;
                     this.confirm();
                 });
         }
     }
-
 
 }

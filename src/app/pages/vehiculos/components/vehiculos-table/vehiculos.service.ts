@@ -29,16 +29,16 @@ export class VehiculosService {
 
 
     addVehiculos = (vehiculo: VehiculosInterface): Observable<VehiculosResponseInterface> => {
-        this.actionUrl = `${this._configuration.serverWithApiUrl}signup`;
+        this.actionUrl = `${this._configuration.serverWithApiUrl}/postVehiculo`;
         const toAdd = JSON.stringify(vehiculo);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <VehiculosResponseInterface>response.json())
             .catch(this.handleError);
     }
 
-    editVehiculos = (vehiculo: VehiculosInterface): Observable<VehiculosResponseInterface> => {
-        this.actionUrl = `${this._configuration.serverWithApiUrl}putVehiculos/${vehiculo.idvehiculo}`;
-        const toAdd = JSON.stringify(vehiculo);
+    editVehiculos = ( data ): Observable<VehiculosResponseInterface> => {
+        this.actionUrl = `${this._configuration.serverWithApiUrl}putVehiculo/${data.data.idvehiculo}`;
+        const toAdd = JSON.stringify(data);
         return this._http.put(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <VehiculosResponseInterface>response.json())
             .catch(this.handleError);
@@ -60,7 +60,7 @@ export class VehiculosService {
 
 
     deleteVehiculos = (id: string): Observable<VehiculosResponseInterface> => {
-        this.actionUrl = `${this._configuration.serverWithApiUrl}deleteVehiculos/${id}`;
+        this.actionUrl = `${this._configuration.serverWithApiUrl}deleteVehiculo/${id}`;
         return this._http.delete(this.actionUrl, { headers: this.headers })
             .map((response: Response) => <VehiculosResponseInterface>response.json())
             .catch(this.handleError);

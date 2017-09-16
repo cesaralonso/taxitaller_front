@@ -2,7 +2,7 @@
     <div class="row">
         <ba-card title="Listado" baCardClass="with-scroll" class="data-table-container">
             <div class="panel panel-default">
-                <!-- <div class="panel-heading">Información de Talleres</div> -->
+                <div class="panel-heading">Información de Talleres</div>
 
                 <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
@@ -63,7 +63,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <button (click)="showModalSearch()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
+            <button (click)="addTalleresModal()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
         </div>
     </div>
     

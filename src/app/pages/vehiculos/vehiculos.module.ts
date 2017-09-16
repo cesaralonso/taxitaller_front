@@ -36,12 +36,12 @@ import { DataFilterPipe } from './components/vehiculos-table/data-filter.pipe';
     VehiculosComponent,
     VehiculosTableComponent,
     DataFilterPipe,
-    VehiculosAddModalComponent,
     VehiculosEditModalComponent,
+    VehiculosAddModalComponent
   ],
   entryComponents: [
-    VehiculosAddModalComponent,
     VehiculosEditModalComponent,
+    VehiculosAddModalComponent
   ],
   providers: [
     VehiculosService

@@ -1,0 +1,74 @@
+<div class="widgets">
+        <div class="row">
+            <ba-card title="Listado" baCardClass="with-scroll" class="data-table-container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Información de permisos</div>
+    
+                    <table class="table table-striped" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%"></th>
+                                <th style="width: 5%">
+                                    <mfDefaultSorter by="nombre">Permiso</mfDefaultSorter>
+                                </th>
+                                <th style="width: 10%">
+                                    <mfDefaultSorter by="descripcion">Descripción</mfDefaultSorter>
+                                </th>
+                                <th style="width: 10%">
+                                    <mfDefaultSorter by="telefono">Fecha de inicio</mfDefaultSorter>
+                                </th>
+                                <th style="width: 10%">
+                                    <mfDefaultSorter by="lat">Vigencia</mfDefaultSorter>
+                                </th>
+                                <th style="width: 10%">
+                                    <mfDefaultSorter by="lng">Liquidación diraria</mfDefaultSorter>
+                                </th>
+                                <th style="width: 10%">
+                                    <mfDefaultSorter by="lng">Liquidación domingo</mfDefaultSorter>
+                                </th>
+                                <th style="width: 5%">
+                                    <mfDefaultSorter by="lng">Baja</mfDefaultSorter>
+                                </th>
+                                <th style="width: 10%">
+                                    <mfDefaultSorter by="created_at">Created at</mfDefaultSorter>
+                                </th>
+                                <th style="width: 10%">
+                                    <mfDefaultSorter by="created_by">Created by</mfDefaultSorter>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mf.data;  let i = index">
+                                <td>
+                                    <button  class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                    <button  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                </td>
+                                <td>{{ item.permiso }}</td>
+                                <td>{{ item.descripcion }}</td>
+                                <td>{{ item.fecha_inicio | date }}</td>
+                                <td>{{ item.vigencia | date }}</td>
+                                <td>{{ item.liquidacion_diaria}}</td>
+                                <td>{{ item.liquidacion_domingo }}</td>
+                                <td>{{ item.baja }}</td>
+                                <td>{{ item.created_at }}</td>
+                                <td>{{ item.created_by }}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </ba-card>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <button (click)="addPermisosModal()" class="btn btn-success"><i class="fa fa-plus"></i> Agregar</button>
+            </div>
+        </div>
+        
+    </div>
