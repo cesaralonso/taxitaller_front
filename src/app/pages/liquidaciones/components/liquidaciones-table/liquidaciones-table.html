@@ -9,45 +9,60 @@
                         <tr>
                             <th style="width: 10%"></th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="permiso">permiso</mfDefaultSorter>
+                                <mfDefaultSorter by="folio">folio</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="descripcion">descripcion</mfDefaultSorter>
+                                <mfDefaultSorter by="fecha">fecha</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="fecha_inicio">fecha_inicio</mfDefaultSorter>
+                                <mfDefaultSorter by="liquidacion_a_pagar">liquidacion_a_pagar</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="vigencia">vigencia</mfDefaultSorter>
+                                <mfDefaultSorter by="liquidacion_pagada">liquidacion_pagada</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="liquidacion_diaria">liquidacion_diaria</mfDefaultSorter>
+                                <mfDefaultSorter by="liquidacion_deuda">liquidacion_deuda</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
-                                <mfDefaultSorter by="liquidacion_domingo">liquidacion_domingo</mfDefaultSorter>
+                                <mfDefaultSorter by="liquidacion_estatus">liquidacion_estatus</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="observaciones">observaciones</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="firma">firma</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
                                 <mfDefaultSorter by="baja">baja</mfDefaultSorter>
                             </th>
                             <th style="width: 5%">
+                                <mfDefaultSorter by="permiso_idpermiso">permiso_idpermiso</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="created_at">created_at</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
                                 <mfDefaultSorter by="created_by">created_by</mfDefaultSorter>
                             </th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of mf.data;  let i = index">
                             <td>
                                 <button (click)="editLiquidacionesModalShow(item)" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
-                                <button (click)="onDeleteConfirm($event, item.idpermiso)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                <button (click)="onDeleteConfirm($event, item.idliquidacion)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                             </td>
-                            <td>{{ item.permiso }}</td>
-                            <td>{{ item.descripcion }}</td>
-                            <td>{{ item.fecha_inicio | date }}</td>
-                            <td>{{ item.vigencia }}</td>
-                            <td>{{ item.liquidacion_diaria }}</td>
-                            <td>{{ item.liquidacion_domingo }}</td>
+                            <td>{{ item.folio }}</td>
+                            <td>{{ item.fecha }}</td>
+                            <td>{{ item.liquidacion_a_pagar }}</td>
+                            <td>{{ item.liquidacion_pagada }}</td>
+                            <td>{{ item.liquidacion_deuda }}</td>
+                            <td>{{ item.liquidacion_estatus }}</td>
+                            <td>{{ item.observaciones }}</td>
+                            <td>{{ item.firma }}</td>
                             <td>{{ item.baja }}</td>
+                            <td>{{ item.permiso_idpermiso }}</td>
+                            <td>{{ item.created_at }}</td>
                             <td>{{ item.created_by }}</td>
                         </tr>
                     </tbody>

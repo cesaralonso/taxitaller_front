@@ -13,7 +13,7 @@ import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 export class VehiculosAddModalComponent extends DialogComponent<VehiculosInterface, any> implements OnInit  {
 
-    public vehiculo: VehiculosInterface = {
+    vehiculo: VehiculosInterface = {
         marca: '',
         modelo: '',
         anio: 1999,
@@ -57,12 +57,11 @@ export class VehiculosAddModalComponent extends DialogComponent<VehiculosInterfa
         dialogService: DialogService,
         fb: FormBuilder,
         private authLocalstorage: AuthLocalstorage,
-        private talleresService: VehiculosService
+        private talleresService: VehiculosService,
     ) {
         super(dialogService);
 
         this.form = fb.group({
-            
             'marcaAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
             'modeloAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
             'anioAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -92,8 +91,6 @@ export class VehiculosAddModalComponent extends DialogComponent<VehiculosInterfa
         this.fecha_asigancion_permisoAC = this.form.controls['fecha_asigancion_permisoAC'];
         this.chofer_idchoferAC = this.form.controls['chofer_idchoferAC'];            
      }
-
-
 
     ngOnInit() { }
     

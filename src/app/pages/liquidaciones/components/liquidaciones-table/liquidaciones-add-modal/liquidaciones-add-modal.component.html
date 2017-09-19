@@ -4,48 +4,65 @@
         <div class="modal-content" style="overflow-y: initial !important">
             <form [formGroup]="form" (ngSubmit)="onSubmit(form)" class="form-horizontal" >
               <div class="modal-header">
-                <h4 class="modal-title">Header</h4>
+                <h4 class="modal-title">Agregar liquidaciones</h4>
                 <button class="close" aria-label="Close">
                   <span aria-hidden="true" (click)="close()">&times;</span>
                 </button>
               </div>
               <div class="modal-body" style="height: 65vh; overflow-y: auto;">
                 <ba-card cardTitle="Información del Liquidacion">
-          
-                  <div class="form-group row" [ngClass]="{'has-error': (!permiso.valid && permiso.touched), 'has-success': (permiso.valid && permiso.touched)}">
-                    <label for="inputpermiso" class="col-sm-2 form-control-label">permiso</label>
-                    <div class="col-sm-10">
-                      <input [formControl]="permiso" type="text" class="form-control" id="inputpermiso" placeholder="permiso">
+                  <div class="form-group row" [ngClass]="{'has-error': (!folioAC.valid && folioAC.touched), 'has-success': (folioAC.valid && folioAC.touched)}">
+                    <label for="folio" class="col-sm-3 form-control-label">folio</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.folio" [formControl]="folioAC" type="text" class="form-control" id="folio">
                     </div>
                   </div>
-                  <div class="form-group row" [ngClass]="{'has-error': (!descripcion.valid && descripcion.touched), 'has-success': (descripcion.valid && descripcion.touched)}">
-                    <label for="inputdescripcion" class="col-sm-2 form-control-label">descripcion</label>
-                    <div class="col-sm-10">
-                      <input [formControl]="descripcion" type="text" class="form-control" id="inputdescripcion" placeholder="descripcion">
+                  <div class="form-group row" [ngClass]="{'has-error': (!fechaAC.valid && fechaAC.touched), 'has-success': (fechaAC.valid && fechaAC.touched)}">
+                    <label for="inputfecha" class="col-sm-3 form-control-label">fecha</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.fecha" [formControl]="fechaAC" type="date" class="form-control" id="inputfecha">
                     </div>
                   </div>
-                  <div class="form-group row" [ngClass]="{'has-error': (!fecha_inicio.valid && fecha_inicio.touched), 'has-success': (fecha_inicio.valid && fecha_inicio.touched)}">
-                    <label for="inputfecha_inicio" class="col-sm-2 form-control-label">fecha_inicio</label>
-                    <div class="col-sm-10">
-                      <input [formControl]="fecha_inicio" type="text" class="form-control" id="inputfecha_inicio" placeholder="fecha_inicio">
+                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_a_pagarAC.valid && liquidacion_a_pagarAC.touched), 'has-success': (liquidacion_a_pagarAC.valid && liquidacion_a_pagarAC.touched)}">
+                    <label for="inputliquidacion_a_pagarAC" class="col-sm-3 form-control-label">liquidacion a pagar</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.liquidacion_a_pagar" [formControl]="liquidacion_a_pagarAC" type="number" class="form-control" id="inputliquidacion_a_pagarAC">
                     </div>
                   </div>
-                  <div class="form-group row" [ngClass]="{'has-error': (!vigencia.valid && vigencia.touched), 'has-success': (vigencia.valid && vigencia.touched)}">
-                    <label for="inputdireccion" class="col-sm-2 form-control-label">vigencia</label>
-                    <div class="col-sm-10">
-                      <input [formControl]="vigencia" type="text" class="form-control" id="inputvigencia" placeholder="vigencia">
+                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_pagadaAC.valid && liquidacion_pagadaAC.touched), 'has-success': (liquidacion_pagadaAC.valid && liquidacion_pagadaAC.touched)}">
+                    <label for="inputliquidacion_pagadaAC" class="col-sm-3 form-control-label">liquidacion pagada</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.liquidacion_pagada" [formControl]="liquidacion_pagadaAC" type="number" class="form-control" id="inputliquidacion_pagadaAC">
                     </div>
                   </div>
-                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_diaria.valid && liquidacion_diaria.touched), 'has-success': (liquidacion_diaria.valid && liquidacion_diaria.touched)}">
-                    <label for="inputliquidacion_diaria" class="col-sm-2 form-control-label">liquidacion_diaria</label>
-                    <div class="col-sm-10">
-                      <input [formControl]="liquidacion_diaria" type="text" class="form-control" id="inputliquidacion_diaria" placeholder="liquidacion_diaria">
+                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_deudaAC.valid && liquidacion_deudaAC.touched), 'has-success': (liquidacion_deudaAC.valid && liquidacion_deudaAC.touched)}">
+                    <label for="inputliquidacion_deudaAC" class="col-sm-3 form-control-label">liquidacion deuda</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.liquidacion_deuda" [formControl]="liquidacion_deudaAC" type="number" class="form-control" id="inputliquidacion_deudaAC">
                     </div>
                   </div>
-                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_domingo.valid && liquidacion_domingo.touched), 'has-success': (liquidacion_domingo.valid && liquidacion_domingo.touched)}">
-                    <label for="inputliquidacion_domingo" class="col-sm-2 form-control-label">liquidacion_domingo</label>
-                    <div class="col-sm-10">
-                      <input [formControl]="liquidacion_domingo" type="text" class="form-control" id="inputliquidacion_domingo" placeholder="liquidacion_domingo">
+                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_estatusAC.valid && liquidacion_estatusAC.touched), 'has-success': (liquidacion_estatusAC.valid && liquidacion_estatusAC.touched)}">
+                    <label for="inputliquidacion_estatusAC" class="col-sm-3 form-control-label">liquidacion estatus</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.liquidacion_estatus" [formControl]="liquidacion_estatusAC" type="text" class="form-control" id="inputliquidacion_estatusAC">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!observacionesAC.valid && observacionesAC.touched), 'has-success': (observacionesAC.valid && observacionesAC.touched)}">
+                    <label for="inputobservaciones" class="col-sm-3 form-control-label">observaciones</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.observaciones" [formControl]="observacionesAC" type="text" class="form-control" id="inputobservaciones">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!firmaAC.valid && firmaAC.touched), 'has-success': (firmaAC.valid && firmaAC.touched)}">
+                    <label for="inputfirma" class="col-sm-3 form-control-label">firma</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.firma" [formControl]="firmaAC" type="checkbox" class="form-control" id="inputfirma">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!permiso_idpermisoAC.valid && permiso_idpermisoAC.touched), 'has-success': (permiso_idpermisoAC.valid && permiso_idpermisoAC.touched)}">
+                    <label for="inputpermiso_idpermiso" class="col-sm-3 form-control-label">idpermiso</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidaciones.permiso_idpermiso" [formControl]="permiso_idpermisoAC" type="number" class="form-control" id="inputpermiso_idpermiso">
                     </div>
                   </div>
                 </ba-card>
@@ -57,6 +74,6 @@
             </form>
         </div>
     </div>
-    <div class="col-md-2"></div>    
+    <div class="col-md-3"></div>    
 </div>
   

@@ -2,15 +2,18 @@ export interface LiquidacionesResponseInterface {
     status?: string;
     message?: string;
     data: {
-        idtaller?: number;
-        nombre: string;
-        direccion: string;
-        descripcion: string;
-        telefono: string;
-        lat: string;
-        lng: string;
-        baja: boolean;
-        created_at: string;
-        created_by: string;
+        idliquidacion?: number;
+        folio: string;
+        fecha: string;
+        liquidacion_a_pagar: number;
+        liquidacion_pagada: number;
+        liquidacion_deuda: number;
+        liquidacion_estatus: string;
+        observaciones: string;
+        firma: boolean;
+        baja?: boolean;
+        permiso_idpermiso: number;
+        created_at?: string;
+        created_by?: number;
     }
 } 

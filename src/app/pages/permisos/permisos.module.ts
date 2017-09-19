@@ -12,6 +12,11 @@ import { routing } from './permisos.routing';
 
 // Service
 import { PermisosService } from './components/permisos.service';
+import { PermisosEditModalComponent } from 
+    './components/permisos-table/permisos-edit-modal/permisos-edit-modal.component';
+import { PermisosAddModalComponent } from 
+    './components/permisos-table/permisos-add-modal/permisos-add-modal.component';
+
 import { LOCALE_ID } from '@angular/core';
 // Components
 import { PermisosComponent } from './permisos.component';
@@ -37,7 +42,13 @@ import { DataFilterPipe } from './components/permisos-table/data-filter.pipe';
     declarations: [
         PermisosComponent,
         PermisosTableComponent,
-        DataFilterPipe
+        DataFilterPipe,
+        PermisosEditModalComponent,
+        PermisosAddModalComponent,
+    ],
+    entryComponents: [
+        PermisosAddModalComponent,
+        PermisosEditModalComponent,
     ],
     providers: [ 
         PermisosService,

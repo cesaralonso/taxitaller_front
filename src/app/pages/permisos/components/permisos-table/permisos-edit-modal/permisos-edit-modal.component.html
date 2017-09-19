@@ -1,0 +1,61 @@
+<div class="row mt-3">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="modal-content" style="overflow-y: initial !important">
+            <form [formGroup]="form" class="form-horizontal" >
+              <div class="modal-header">
+                <h4 class="modal-title">Editar datos de permisos</h4>
+                <button class="close" aria-label="Close">
+                  <span aria-hidden="true" (click)="close()">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+                <ba-card cardTitle="Información del permiso">
+                  <div class="form-group row" [ngClass]="{'has-error': (!permisoAC.valid && permisoAC.touched), 'has-success': (permisoAC.valid && permisoAC.touched)}">
+                    <label for="inputpermiso" class="col-sm-3 form-control-label">permiso</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="permiso" [formControl]="permisoAC" type="text" class="form-control" id="inputpermiso">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!descripcionAC.valid && descripcionAC.touched), 'has-success': (descripcionAC.valid && descripcionAC.touched)}">
+                    <label for="inputdescripcion" class="col-sm-3 form-control-label">descripcion</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="descripcion" [formControl]="descripcionAC" type="text" class="form-control" id="inputdescripcion">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!fecha_inicioAC.valid && fecha_inicioAC.touched), 'has-success': (fecha_inicioAC.valid && fecha_inicioAC.touched)}">
+                    <label for="inputfecha_inicio" class="col-sm-3 form-control-label">fecha_inicio</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="fecha_inicio" [formControl]="fecha_inicioAC" type="date" class="form-control" id="inputfecha_inicio">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!vigenciaAC.valid && vigenciaAC.touched), 'has-success': (vigenciaAC.valid && vigenciaAC.touched)}">
+                    <label for="inputvigencia" class="col-sm-3 form-control-label">vigencia</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="vigencia" [formControl]="vigenciaAC" type="date" class="form-control" id="inputvigencia">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_diariaAC.valid && liquidacion_diariaAC.touched), 'has-success': (liquidacion_diariaAC.valid && liquidacion_diariaAC.touched)}">
+                    <label for="inputliquidacion_diaria" class="col-sm-3 form-control-label">liquidacion_diaria</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidacion_diaria" [formControl]="liquidacion_diariaAC" type="number" class="form-control" id="inputliquidacion_diaria">
+                    </div>
+                  </div>
+                  <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_domingoAC.valid && liquidacion_domingoAC.touched), 'has-success': (liquidacion_domingoAC.valid && liquidacion_domingoAC.touched)}">
+                    <label for="inputliquidacion_domingo" class="col-sm-3 form-control-label">liquidacion_domingo</label>
+                    <div class="col-sm-9">
+                      <input [(ngModel)]="liquidacion_domingo" [formControl]="liquidacion_domingoAC" type="number" class="form-control" id="inputliquidacion_domingo">
+                    </div>
+                  </div>
+                </ba-card>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+                <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" type="submit" (click)="updatepermiso(form)">Aceptar</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-2"></div>    
+</div>
+  

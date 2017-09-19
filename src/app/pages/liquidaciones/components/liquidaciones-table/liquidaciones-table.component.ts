@@ -36,11 +36,12 @@ export class LiquidacionesTableComponent implements OnInit {
         return +num;
     }
 
-    editLiquidacionesModalShow( taller ) {
-      const disposable = this.dialogService.addDialog(LiquidacionesEditModalComponent, taller)
+    editLiquidacionesModalShow( liquidacion ) {
+      const disposable = this.dialogService.addDialog(LiquidacionesEditModalComponent, liquidacion)
       .subscribe( data => {
-          if ( data ) 
+          if (data) { 
             this.showToast(data);
+          }
       },
       error => console.log(error),
       () => console.log('Modified complete'));
@@ -48,8 +49,8 @@ export class LiquidacionesTableComponent implements OnInit {
     
     onDeleteConfirm(event, id): void {
       const disposable = this.dialogService.addDialog( ConfirmModalComponent, {
-        title: ' Eiminar taller',
-        message: '¿Estas seguro que deseas eliminar este taller?',
+        title: ' Eiminar liquidación',
+        message: '¿Estas seguro que deseas eliminar este liquidación?',
       }).subscribe( isDeleted => {
         if ( isDeleted ) {
           this.service.deleteLiquidaciones(id)
@@ -83,7 +84,7 @@ export class LiquidacionesTableComponent implements OnInit {
         this.service
           .getAllLiquidaciones()
           .subscribe(
-              data => this.data =  data.data ),
+              data => this.data = data.data ),
               error => console.log(error),
               () => console.log('Get all Items complete');
     }

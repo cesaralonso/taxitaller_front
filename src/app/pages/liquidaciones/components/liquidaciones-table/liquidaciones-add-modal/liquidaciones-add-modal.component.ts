@@ -13,16 +13,16 @@ import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 export class LiquidacionesAddModalComponent extends DialogComponent<LiquidacionesInterface, any> implements OnInit  {
 
-    public taller: LiquidacionesInterface = {
-        nombre: '',
-        direccion: '',
-        descripcion: '',
-        telefono: '',
-        lat: '',
-        lng: '',
-        baja: false,
-        created_at: '',
-        created_by: '',
+    liquidaciones: LiquidacionesInterface = {
+        folio: '',
+        fecha: '',
+        liquidacion_a_pagar: 0,
+        liquidacion_pagada: 0,
+        liquidacion_deuda: 0,
+        liquidacion_estatus: '',
+        observaciones: '',
+        firma: false,
+        permiso_idpermiso: 0,
     };
 
     data: any;
@@ -32,41 +32,47 @@ export class LiquidacionesAddModalComponent extends DialogComponent<Liquidacione
     form: FormGroup;
     submitted: boolean = false;
 
-    nombreAC: AbstractControl;
-    direccionAC : AbstractControl;
-    descripcionAC : AbstractControl;
-    telefonoAC : AbstractControl;
-    latAC : AbstractControl;
-    lngAC : AbstractControl;
+    folioAC: AbstractControl;
+    fechaAC: AbstractControl;
+    liquidacion_a_pagarAC: AbstractControl;
+    liquidacion_pagadaAC: AbstractControl;
+    liquidacion_deudaAC: AbstractControl;
+    liquidacion_estatusAC: AbstractControl;
+    observacionesAC: AbstractControl;
+    firmaAC: AbstractControl;
+    permiso_idpermisoAC: AbstractControl;
+
 
     constructor( 
         dialogService: DialogService,
         fb: FormBuilder,
         private authLocalstorage: AuthLocalstorage,
-        private liquidacionesService: LiquidacionesService
+        private liquidacionesService: LiquidacionesService,
     ) {
         super(dialogService);
 
         this.form = fb.group({
-            
-            'nombreAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            'direccionAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            'descripcionAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            'telefonoAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            'latAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            'lngAC' : ['', Validators.compose([Validators.required, Validators.minLength(1)])],
-            
+            folioAC: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            fechaAC: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            liquidacion_a_pagarAC: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            liquidacion_pagadaAC: [''],
+            liquidacion_deudaAC: [''],
+            liquidacion_estatusAC: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            observacionesAC: [''],
+            firmaAC: [''],
+            permiso_idpermisoAC: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
         });
-                
-        this.nombreAC = this.form.controls['nombreAC'];
-        this.direccionAC = this.form.controls['direccionAC'];
-        this.descripcionAC = this.form.controls['descripcionAC'];
-        this.telefonoAC = this.form.controls['telefonoAC'];
-        this.latAC = this.form.controls['latAC'];
-        this.lngAC = this.form.controls['lngAC'];
+
+        this.folioAC = this.form.controls['folioAC'];
+        this.fechaAC = this.form.controls['fechaAC'];
+        this.liquidacion_a_pagarAC = this.form.controls['liquidacion_a_pagarAC'];
+        this.liquidacion_pagadaAC = this.form.controls['liquidacion_pagadaAC'];
+        this.liquidacion_deudaAC = this.form.controls['liquidacion_deudaAC'];
+        this.liquidacion_estatusAC = this.form.controls['liquidacion_estatusAC'];
+        this.observacionesAC = this.form.controls['observacionesAC'];
+        this.firmaAC = this.form.controls['firmaAC'];
+        this.permiso_idpermisoAC = this.form.controls['permiso_idpermisoAC'];
      }
-
-
 
     ngOnInit() { }
     
@@ -77,7 +83,7 @@ export class LiquidacionesAddModalComponent extends DialogComponent<Liquidacione
 
     onSubmit( form ) {
         if (form.valid) {
-            this.liquidacionesService.addLiquidaciones( this.taller )
+            this.liquidacionesService.addLiquidaciones( this.liquidaciones )
                 .subscribe((data: any) => {                        
                     this.data = data;
                     this.confirm();

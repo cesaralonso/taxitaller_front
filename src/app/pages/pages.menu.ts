@@ -19,7 +19,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'general.menu.talleres',
-            icon: 'ion-social-buffer',
+            icon: 'ion-medkit',
             selected: false,
             expanded: false,
             order: 0
@@ -31,7 +31,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'general.menu.vehiculos',
-            icon: 'ion-social-buffer',
+            icon: 'ion-model-s',
             selected: false,
             expanded: false,
             order: 0
@@ -43,7 +43,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'general.menu.permisos',
-            icon: 'ion-social-buffer',
+            icon: 'ion-key',
             selected: false,
             expanded: false,
             order: 0
@@ -55,7 +55,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'general.menu.liquidaciones',
-            icon: 'ion-social-buffer',
+            icon: 'ion-cash',
             selected: false,
             expanded: false,
             order: 0
@@ -67,7 +67,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'general.menu.bonificaciones',
-            icon: 'ion-social-buffer',
+            icon: 'ion-social-usd-outline',
             selected: false,
             expanded: false,
             order: 0
@@ -79,7 +79,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'general.menu.choferes',
-            icon: 'ion-social-buffer',
+            icon: 'ion-ios-body',
             selected: false,
             expanded: false,
             order: 0
@@ -91,7 +91,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'general.menu.admin',
-            icon: 'ion-person-stalker',
+            icon: 'ion-person',
             selected: false,
             expanded: false,
             order: 0
@@ -127,7 +127,7 @@ export const PAGES_MENU = [
             data: {
               menu: {
                 title: 'general.menu.reportes',
-                icon: 'ion-person-stalker',
+                icon: 'ion-document-text',
                 selected: false,
                 expanded: false,
                 order: 0

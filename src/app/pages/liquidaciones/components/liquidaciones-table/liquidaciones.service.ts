@@ -28,16 +28,16 @@ export class LiquidacionesService {
     }
 
 
-    addLiquidaciones = (taller: LiquidacionesInterface): Observable<LiquidacionesResponseInterface> => {
+    addLiquidaciones = (liquidacion: LiquidacionesInterface): Observable<LiquidacionesResponseInterface> => {
         this.actionUrl = `${this._configuration.serverWithApiUrl}postLiquidacion`;
-        const toAdd = JSON.stringify(taller);
+        const toAdd = JSON.stringify(liquidacion);
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <LiquidacionesResponseInterface>response.json())
             .catch(this.handleError);
     }
 
     editLiquidaciones = ( data ): Observable<LiquidacionesResponseInterface> => {
-        this.actionUrl = `${this._configuration.serverWithApiUrl}putLiquidacion/${data.data.idtaller}`;
+        this.actionUrl = `${this._configuration.serverWithApiUrl}putLiquidacion/${data.data.idliquidacion}`;
         const toAdd = JSON.stringify(data);
         return this._http.put(this.actionUrl, toAdd, { headers: this.headers })
             .map((response: Response) => <LiquidacionesResponseInterface>response.json())
